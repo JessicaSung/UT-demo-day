@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "I created this simple full-stack application to capture networking information at UT Coding Bootcamp Demo Day February 22, 2017.",
   "main": "index.js",
+  "engines": {
+    "node": "4.6.0",
+    "npm": "2.15.9"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack ./webpack.config.js --progress --colors",
