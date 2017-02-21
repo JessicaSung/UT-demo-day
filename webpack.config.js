@@ -15,13 +15,12 @@ module.exports = {
 	},
 	module: {
 		loaders: [{
-			test: /\.jsx?$/,
-			include: /src/,
-      loader: "babel",
-      query: {
-      	presets: ["react", "es2015", "stage-0"]
-      }
-    }]
+			test: /\.js$/,
+			loader: "babel-loader",
+      		query: {
+      			presets: ["react", "es2015", "stage-0"]
+     		}
+    	}]
 	},
 	devtool: "eval-source-map"
 };
