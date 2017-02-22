@@ -2,6 +2,12 @@ import React, { Component } from 'react';
 import {Table, TableBody, TableRow, TableRowColumn} from 'material-ui/Table';
 import TextField from 'material-ui/TextField';
 
+const styles = {
+	floatingLabelFocusStyle: {
+        color: '#BF5700'
+    }
+}
+
 export default class ContactTable extends Component {
 	constructor(props) {
     	super(props);
@@ -20,6 +26,7 @@ export default class ContactTable extends Component {
 							<TextField
 								hintText="First Last"
 								floatingLabelText="Name"
+								floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
 							/>
 						</TableRowColumn>
 					</TableRow>
