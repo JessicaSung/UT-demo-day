@@ -3,10 +3,7 @@ import axios from 'axios';
 import {Table, TableBody, TableRow, TableRowColumn} from 'material-ui/Table';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
-
-// const style = {
-//   margin: 20,
-// };
+import Snackbar from 'material-ui/Snackbar';
 
 export default class ContactTable extends Component {
 	constructor(props) {
@@ -15,10 +12,12 @@ export default class ContactTable extends Component {
     	this.state = {
     		name: '',
     		email: '',
-    		linkedin: ''
+    		linkedin: '',
+    		open: false
     	};
     	this.handleInputChange = this.handleInputChange.bind(this);
     	this.handleSubmit = this.handleSubmit.bind(this);
+    	this.handleRequestClose = this.handleRequestClose.bind(this);
 	}
 
 	handleInputChange(event) {
@@ -35,12 +34,17 @@ export default class ContactTable extends Component {
 			email: this.state.email,
 			linkedin: this.state.linkedin
 		}).then((response) => {
-			console.log('Successfully saved to database.');
+			console.log('Saved successfully to database.');
+			this.setState({ open: true });
 		}).catch(function(err) {
 			console.error(err);
 		});
 
-		this.setState({ name: '', email: '', linkedin: '' });
+		// this.setState({  });
+	}
+
+	handleRequestClose() {
+	    this.setState({ open: false, name: '', email: '', linkedin: '' });
 	}
 
 	render() {
@@ -78,6 +82,12 @@ export default class ContactTable extends Component {
 									type="submit"
 									label="Submit"	
 									primary={true} 
+								/>
+								<Snackbar
+									open={this.state.open}
+									message={"Thanks for stopping by, " + this.state.name + "!"}
+									autoHideDuration={4000}
+									onRequestClose={this.handleRequestClose}
 								/>
 							</TableRowColumn>
 						</TableRow>

@@ -9,8 +9,8 @@ module.exports = {
 	resolve: {
 		root: __dirname,
 		alias: {
-      		Main: 'src/components/Main.js',
-      		ContactTable: 'src/components/ContactTable.js'
+			ContactTable: 'src/components/ContactTable.js',
+      		Main: 'src/components/Main.js'
 		},
 		extensions: ['', '.js', '.jsx']
 	},
