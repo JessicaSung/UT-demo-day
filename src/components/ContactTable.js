@@ -17,62 +17,72 @@ export default class ContactTable extends Component {
     		linkedin: ''
     	};
     	this.handleInputChange = this.handleInputChange.bind(this);
+    	this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
 	handleInputChange(event) {
 		const newState = {};
-		newState[event.target.name] = event.target.value;
+		newState[event.target.id] = event.target.value;
 		this.setState(newState);
+	}
+
+	handleSubmit(event) {
+		event.preventDefault();
+		console.log(this.state);
+		this.setState({ name: '', email: '', linkedin: '' });
 	}
 
 	render() {
 		console.log(this.state);	
 		return (
-			<Table selectable={ false }>
-				<TableBody displayRowCheckbox={ false }>
-					<TableRow>
-						<TableRowColumn>
-							<TextField
-								name="name"
-								floatingLabelText="Name"
-								hintText="First Last"
-								value={this.state.name}
-								onChange={this.handleInputChange}
-							/>
-						</TableRowColumn>
-					</TableRow>
-					<TableRow>
-						<TableRowColumn>
-							<TextField
-								name="email"
-								floatingLabelText="Email Address"
-								hintText="example@me.com"
-								value={this.state.email}
-								onChange={this.handleInputChange}
-							/>
-						</TableRowColumn>
-					</TableRow>
-					<TableRow>
-						<TableRowColumn>
-							<TextField
-								name="linkedin"
-								floatingLabelText="LinkedIn URL"
-								hintText="(optional)"
-								value={this.state.linkedin}
-								onChange={this.handleInputChange}
-							/>
-						</TableRowColumn>
-					</TableRow>
-					<TableRow>
-						<TableRowColumn>
-							<RaisedButton 
-								label="Submit" 
-								primary={true} 
-								style={style}/>
-						</TableRowColumn>
-					</TableRow>
-				</TableBody>
-			</Table>
+			<form onSubmit={this.handleSubmit}>
+				<Table selectable={ false }>
+					<TableBody displayRowCheckbox={ false }>
+						<TableRow>
+							<TableRowColumn>
+								<TextField
+									id="name"
+									floatingLabelText="Name"
+									hintText="First Last"
+									value={this.state.name}
+									onChange={this.handleInputChange}
+								/>
+							</TableRowColumn>
+						</TableRow>
+						<TableRow>
+							<TableRowColumn>
+								<TextField
+									id="email"
+									floatingLabelText="Email Address"
+									hintText="example@me.com"
+									value={this.state.email}
+									onChange={this.handleInputChange}
+								/>
+							</TableRowColumn>
+						</TableRow>
+						<TableRow>
+							<TableRowColumn>
+								<TextField
+									id="linkedin"
+									floatingLabelText="LinkedIn URL"
+									hintText="(optional)"
+									value={this.state.linkedin}
+									onChange={this.handleInputChange}
+								/>
+							</TableRowColumn>
+						</TableRow>
+						<TableRow>
+							<TableRowColumn>
+								<RaisedButton 
+									type="submit"
+									label="Submit"	
+									primary={true} 
+									style={style}/>
+							</TableRowColumn>
+						</TableRow>
+					</TableBody>
+				</Table>
+			</form>
 		);
 	}
 }
