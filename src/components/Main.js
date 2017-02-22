@@ -9,8 +9,7 @@ export default class Main extends Component {
 		return (
 			<MuiThemeProvider>
 				<div>
-			   		<AppBar title="Jessica Sung"
-			   			style={{ backgroundColor: '#BF5700'	}} />
+			   		<AppBar title="Jessica Sung" />
 			   		<ContactTable />
 			   	</div>
 		  	</MuiThemeProvider>
