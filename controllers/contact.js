@@ -9,9 +9,7 @@ const router = express.Router();
 
 // Routes
 router.post('/save', function(req, res) {
-	const visitor = req.body;
-	
-	Contact.collection.insert({ visitor });
+	Contact.collection.insert( req.body );
 	res.json({ status: 'success' });
 });
 

@@ -4,9 +4,9 @@ import {Table, TableBody, TableRow, TableRowColumn} from 'material-ui/Table';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
-const style = {
-  margin: 20,
-};
+// const style = {
+//   margin: 20,
+// };
 
 export default class ContactTable extends Component {
 	constructor(props) {
@@ -57,10 +57,7 @@ export default class ContactTable extends Component {
 									value={this.state.name}
 									onChange={this.handleInputChange}
 								/>
-							</TableRowColumn>
-						</TableRow>
-						<TableRow>
-							<TableRowColumn>
+									<br />	
 								<TextField
 									id="email"
 									floatingLabelText="Email Address"
@@ -68,10 +65,7 @@ export default class ContactTable extends Component {
 									value={this.state.email}
 									onChange={this.handleInputChange}
 								/>
-							</TableRowColumn>
-						</TableRow>
-						<TableRow>
-							<TableRowColumn>
+									<br />
 								<TextField
 									id="linkedin"
 									floatingLabelText="LinkedIn URL"
@@ -79,15 +73,12 @@ export default class ContactTable extends Component {
 									value={this.state.linkedin}
 									onChange={this.handleInputChange}
 								/>
-							</TableRowColumn>
-						</TableRow>
-						<TableRow>
-							<TableRowColumn>
+									<br /> <br />
 								<RaisedButton 
 									type="submit"
 									label="Submit"	
 									primary={true} 
-									style={style}/>
+								/>
 							</TableRowColumn>
 						</TableRow>
 					</TableBody>
