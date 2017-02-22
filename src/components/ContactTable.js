@@ -12,11 +12,21 @@ export default class ContactTable extends Component {
     	super(props);
 
     	this.state = {
-    		contact: []
+    		name: '',
+    		email: '',
+    		linkedin: ''
     	};
+    	this.handleInputChange = this.handleInputChange.bind(this);
 	}
 
-	render() {		
+	handleInputChange(event) {
+		const newState = {};
+		newState[event.target.name] = event.target.value;
+		this.setState(newState);
+	}
+
+	render() {
+		console.log(this.state);	
 		return (
 			<Table selectable={ false }>
 				<TableBody displayRowCheckbox={ false }>
@@ -24,8 +34,10 @@ export default class ContactTable extends Component {
 						<TableRowColumn>
 							<TextField
 								name="name"
-								hintText="First Last"
 								floatingLabelText="Name"
+								hintText="First Last"
+								value={this.state.name}
+								onChange={this.handleInputChange}
 							/>
 						</TableRowColumn>
 					</TableRow>
@@ -33,8 +45,10 @@ export default class ContactTable extends Component {
 						<TableRowColumn>
 							<TextField
 								name="email"
-								hintText="example@me.com"
 								floatingLabelText="Email Address"
+								hintText="example@me.com"
+								value={this.state.email}
+								onChange={this.handleInputChange}
 							/>
 						</TableRowColumn>
 					</TableRow>
@@ -42,8 +56,10 @@ export default class ContactTable extends Component {
 						<TableRowColumn>
 							<TextField
 								name="linkedin"
-								hintText="(optional)"
 								floatingLabelText="LinkedIn URL"
+								hintText="(optional)"
+								value={this.state.linkedin}
+								onChange={this.handleInputChange}
 							/>
 						</TableRowColumn>
 					</TableRow>
