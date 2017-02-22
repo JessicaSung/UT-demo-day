@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import {Table, TableBody, TableRow, TableRowColumn} from 'material-ui/Table';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -28,12 +29,21 @@ export default class ContactTable extends Component {
 
 	handleSubmit(event) {
 		event.preventDefault();
-		console.log(this.state);
+
+		axios.post('/api/contact/save', {
+			name: this.state.name,
+			email: this.state.email,
+			linkedin: this.state.linkedin
+		}).then((response) => {
+			console.log('Successfully saved to database.');
+		}).catch(function(err) {
+			console.error(err);
+		});
+
 		this.setState({ name: '', email: '', linkedin: '' });
 	}
 
 	render() {
-		console.log(this.state);	
 		return (
 			<form onSubmit={this.handleSubmit}>
 				<Table selectable={ false }>
