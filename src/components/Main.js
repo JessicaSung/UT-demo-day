@@ -10,7 +10,7 @@ export default class Main extends Component {
 			<MuiThemeProvider>
 				<div>
 			   		<AppBar title="Jessica Sung" />
-			   		<ContactTable />
+			   		{this.props.children}
 			   	</div>
 		  	</MuiThemeProvider>
 		);
