@@ -13,11 +13,11 @@ export default class ContactTable extends Component {
     		name: '',
     		email: '',
     		linkedin: '',
-    		open: false
+    		openSnackbar: false,
     	};
     	this.handleInputChange = this.handleInputChange.bind(this);
     	this.handleSubmit = this.handleSubmit.bind(this);
-    	this.handleRequestClose = this.handleRequestClose.bind(this);
+    	this.handleRequestCloseSnackbar = this.handleRequestCloseSnackbar.bind(this);
 	}
 
 	handleInputChange(event) {
@@ -35,16 +35,14 @@ export default class ContactTable extends Component {
 			linkedin: this.state.linkedin
 		}).then((response) => {
 			console.log('Saved successfully to database.');
-			this.setState({ open: true });
+			this.setState({ openSnackbar: true });
 		}).catch(function(err) {
 			console.error(err);
 		});
-
-		// this.setState({  });
 	}
 
-	handleRequestClose() {
-	    this.setState({ open: false, name: '', email: '', linkedin: '' });
+	handleRequestCloseSnackbar() {
+	    this.setState({ openSnackbar: false, name: '', email: '', linkedin: '' });
 	}
 
 	render() {
@@ -84,10 +82,10 @@ export default class ContactTable extends Component {
 									primary={true} 
 								/>
 								<Snackbar
-									open={this.state.open}
+									open={this.state.openSnackbar}
 									message={"Thanks for stopping by, " + this.state.name + "!"}
 									autoHideDuration={4000}
-									onRequestClose={this.handleRequestClose}
+									onRequestClose={this.handleRequestCloseSnackbar}
 								/>
 							</TableRowColumn>
 						</TableRow>
